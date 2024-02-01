@@ -11,4 +11,4 @@ const socketController = (socket) => {
   });
 };
 
-module.exports = { socketController };
+module.exports = socketController;
