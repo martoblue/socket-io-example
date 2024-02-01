@@ -19,19 +19,14 @@ class Server {
     this.app.use(express.json());
     this.app.use(express.static('public'));
   }
-  start() {
+  socket() {
     this.io.on('connection', socketController);
-    /*
-    (socket) => {
-      console.log('a user connected');
-      socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
-    }
-    */
-    this.server.listen(port, () => console.log(`Server listening on port ${port}!`));
   }
-  stop() {
-    this.server.close();
+  listen() {
+    this.server.listen(this.port, () => {
+      console.log(`Server listening on port ${this.port}!`);
+    });
   }
 }
+
+module.exports = Server;
