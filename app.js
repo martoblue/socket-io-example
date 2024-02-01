@@ -1,11 +1,5 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+const Server = require('./models/server');
 
-const app = express();
-const port = process.env.PORT ?? 3030;
+const server = new Server();
 
-app.use(cors());
-app.use(express.json());
-
-app.listen(port, () => console.log(`Server listening on port ${port}!`));
+server.listen();

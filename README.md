@@ -6,5 +6,5 @@
 npm install socket.io -S
 npm install dotenv -S
 npm install express -S
-npm i nodemon -S
+npm i nodemon -D
 ```

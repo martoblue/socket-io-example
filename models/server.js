@@ -9,7 +9,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT ?? 3030;
     this.server = http.createServer(this.app);
-    this.io = socketIOServer(this.server);
+    this.io = new socketIOServer(this.server);
 
     // Middlewares
     this.middleware();
