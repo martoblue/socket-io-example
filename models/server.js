@@ -2,24 +2,26 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 require('dotenv').config;
-const { Server: socketIOServer } = require('socket.io');
+const { Server: SocketIOServer } = require('socket.io');
+const socketController = require('../sockets/controller');
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT ?? 3030;
     this.server = http.createServer(this.app);
-    this.io = new socketIOServer(this.server);
+    this.io = new SocketIOServer(this.server);
 
     // Middlewares
     this.middleware();
+    this.sockets();
   }
   middleware() {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(express.static('public'));
   }
-  socket() {
+  sockets() {
     this.io.on('connection', socketController);
   }
   listen() {
